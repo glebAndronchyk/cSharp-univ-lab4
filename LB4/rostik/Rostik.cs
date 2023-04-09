@@ -1,10 +1,14 @@
 using System;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using LB4.Components;
+using LB4.Structs;
 
-namespace Program
+namespace LB4.rostik
 {
     class Rostik
     {
+        public static string name = "Ростік";
+        
         //BlockFirst
         static int[] ArrayInputRandom()
         {
@@ -199,34 +203,14 @@ namespace Program
         }
         public static void InitTaskMenu()
         {
-            int inputChoice;
-            
-            do
+            Dictionary<int, MenuOptionStruct> menuOptions = new Dictionary<int, MenuOptionStruct>
             {
-                Console.WriteLine("Виберiть Block:");
-                Console.WriteLine("Введiть 1, щоб вибрати Block 1:");
-                Console.WriteLine("Введiть 2, щоб вибрати Block 2:");
-                Console.WriteLine("Введiть 0 для виходу з програми!");
-                
-                inputChoice = Convert.ToInt32(Console.ReadLine());
-                
-                switch (inputChoice)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        BlockFirst();
-                        break;
-                    case 2:
-                        BlockSecond();
-                        break;
-                    default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Команда не розпiзнана!");
-                        Console.ResetColor();
-                        break;
-                }
-            } while (inputChoice != 0);
+                { 1, new MenuOptionStruct(BlockFirst) },
+                { 2, new MenuOptionStruct(BlockSecond) },
+            };
+
+            Menu menu = new Menu(menuOptions);
+            menu.Init();
         }
     }
 }
