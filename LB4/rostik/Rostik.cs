@@ -197,7 +197,7 @@ namespace Program
             PrintSecond(array);
             
         }
-        public static void MainBlock(string[] args)
+        public static void InitTaskMenu(string[] args)
         {
             int inputChoice;
             
