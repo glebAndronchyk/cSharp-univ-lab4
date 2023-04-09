@@ -43,8 +43,8 @@ namespace LB4.Components
             foreach (var option in _options)
             {
                 string studentText = $"студента {option.Value.studentName}";
-                string taskName = option.Value.Task.Method.Name;
-                string placeholder = option.Value.isStudent ? studentText : taskName;
+                string taskText = option.Value.Task.Method.Name;
+                string placeholder = option.Value.isStudent ? studentText : taskText;
                 Console.WriteLine($"Введiть {option.Key}, щоб вибрати {placeholder}:");
             }
             Console.WriteLine("Введiть 0 для виходу з програми!");
