@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Program
 {
-    internal class Program
+    class Rostik
     {
         //BlockFirst
         static int[] ArrayInputRandom()
@@ -197,7 +197,7 @@ namespace Program
             PrintSecond(array);
             
         }
-        public static void InitTaskMenu(string[] args)
+        public static void InitTaskMenu()
         {
             int inputChoice;
             
