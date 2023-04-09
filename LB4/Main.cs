@@ -14,6 +14,8 @@ namespace LB4
             Dictionary<int, MenuOptionStruct> menuOptions = new Dictionary<int, MenuOptionStruct>
             {
                 { 1, new MenuOptionStruct(Rostik.InitTaskMenu, Rostik.name, true) },
+                // { 2, new MenuOptionStruct(Volodimir.InitTaskMenu, Volodimir.name, true) },
+                // { 3, new MenuOptionStruct(Hlib.InitTaskMenu, Hlib.name, true) },
             };
             Menu menu = new Menu(menuOptions);
             menu.Init();
