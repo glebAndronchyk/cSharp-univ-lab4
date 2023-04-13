@@ -15,7 +15,7 @@ namespace LB4
             {
                 { 1, new MenuOptionStruct(Rostik.InitTaskMenu, Rostik.name, true) },
                 // { 2, new MenuOptionStruct(Volodimir.InitTaskMenu, Volodimir.name, true) },
-                // { 3, new MenuOptionStruct(Hlib.InitTaskMenu, Hlib.name, true) },
+                // { 3, new MenuOptionStruct(Glib.InitTaskMenu, Glib.name, true) },
             };
             Menu menu = new Menu(menuOptions);
             menu.Init();

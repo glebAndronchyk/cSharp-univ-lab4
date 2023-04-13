@@ -40,9 +40,10 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Components\Menu.cs" />
+        <Compile Include="Constants\Student.cs" />
         <Compile Include="Main.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="rostik\Rostik.cs" />
+        <Compile Include="Rostik\Rostik.cs" />
         <Compile Include="Structs\MenuOptionStruct.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
