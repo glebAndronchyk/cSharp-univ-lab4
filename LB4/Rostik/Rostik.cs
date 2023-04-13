@@ -38,7 +38,7 @@ namespace LB4.rostik
             }
             return array;
         }
-        static void PrintFirst(int[] array)
+        static void PrintArrayFirst(int[] array)
         {
             foreach (int element in array)
             {
@@ -85,7 +85,7 @@ namespace LB4.rostik
             Console.WriteLine("Введiть кiлькiсть елементiв, якi треба знищити:");
             int quantity = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Створений масив:");
-            PrintFirst(array);
+            PrintArrayFirst(array);
             
             if (number < array.Length && number + quantity <= array.Length)
             {
@@ -97,7 +97,7 @@ namespace LB4.rostik
                 Array.Resize(ref array, array.Length - quantity);
                 
                 Console.WriteLine("Результат:");
-                PrintFirst(array);
+                PrintArrayFirst(array);
             }
             else
             {
@@ -144,7 +144,7 @@ namespace LB4.rostik
             }
             return array;
         }
-        static void PrintSecond(int[][] array)
+        static void PrintArraySecond(int[][] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -182,24 +182,27 @@ namespace LB4.rostik
         }
         static void TaskSecond(int[][] array)
         {
-            Console.Write("Введiть номер рядка, який потрiбно знищити: ");
+            Console.WriteLine("Введiть номер рядка, який потрiбно знищити:");
             int number = Convert.ToInt32(Console.ReadLine());
-            
+
             if (number < 0 || number >= array.Length)
             {
                 Console.WriteLine($"Рядок з номером {number} не iснує у масивi.");
                 return;
             }
-            
+
             Console.WriteLine("Створений масив:");
-            PrintSecond(array);
-            
-            array[number] = array[array.Length - 1];
+            PrintArraySecond(array);
+
+            for (int i = number; i < array.Length - 1; i++)
+            {
+                array[i] = array[i + 1];
+            }
+
             Array.Resize(ref array, array.Length - 1);
-            
+
             Console.WriteLine("Результат:");
-            PrintSecond(array);
-            
+            PrintArraySecond(array);
         }
         public static void InitTaskMenu()
         {
