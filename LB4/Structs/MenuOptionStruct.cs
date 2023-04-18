@@ -9,9 +9,9 @@ namespace LB4.Structs
         public Action Task;
 
 
-        public MenuOptionStruct(Action Task, string studentName = null, bool isStudent = false )
+        public MenuOptionStruct(Action task, string studentName = null, bool isStudent = false )
         {
-            this.Task = Task;
+            Task = task;
             this.isStudent = isStudent;
             this.studentName = studentName;
         }

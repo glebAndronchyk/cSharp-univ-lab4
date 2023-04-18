@@ -39,12 +39,16 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Components\Menu.cs" />
-        <Compile Include="Constants\Student.cs" />
+        <Compile Include="App.cs" />
+        <Compile Include="Components\MenuFactory.cs" />
+        <Compile Include="Components\MenuWithCustomPlaceholder.cs" />
+        <Compile Include="Components\MenuWithPreDefinedPlaceholder.cs" />
         <Compile Include="Main.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Rostik\Rostik.cs" />
+        <Compile Include="rostik\Rostik.cs" />
         <Compile Include="Structs\MenuOptionStruct.cs" />
+        <Compile Include="Structs\MenuOptionWithCustomPlaceholderStruct.cs" />
+        <Compile Include="utils\ArrayFiller.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,19 +6,14 @@ using LB4.Structs;
 
 namespace LB4
 {
-    internal class Program
+    class Program
     {
+        
+        
         public static void Main(string[] args)
         {
             Console.WriteLine("LAB4");
-            Dictionary<int, MenuOptionStruct> menuOptions = new Dictionary<int, MenuOptionStruct>
-            {
-                { 1, new MenuOptionStruct(Rostik.InitTaskMenu, Rostik.name, true) },
-                // { 2, new MenuOptionStruct(Volodimir.InitTaskMenu, Volodimir.name, true) },
-                // { 3, new MenuOptionStruct(Glib.InitTaskMenu, Glib.name, true) },
-            };
-            Menu menu = new Menu(menuOptions);
-            menu.Init();
+            new App().Main();
         }
     }
 }

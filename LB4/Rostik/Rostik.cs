@@ -2,90 +2,29 @@ using System;
 using System.Collections.Generic;
 using LB4.Components;
 using LB4.Structs;
+using LB4.utils;
 
 namespace LB4.rostik
 {
     class Rostik
     {
-        public static string name = "Ростік";
+        public string Name = "Ростік";
+        public ArrayFiller _af = new ArrayFiller();
         
-        //BlockFirst
-        static int[] ArrayInputRandom()
+        public void BlockFirst()
         {
-            Console.WriteLine("Введiть кiлькiсть елементiв:");
-            
-            int number = Convert.ToInt32(Console.ReadLine());
-            int[] array = new int[number];
-            Random random = new Random();
-            
-            for (int i = 0; i < number; i++)
-            {
-                array[i] = random.Next(-100, 100);
-            }
-            return array;
+            List<int> list = new List<int>();
+            _af.Menu(list);
+            TaskFirst(list.ToArray());
         }
-        static int[] ArrayInputSpace()
-        {
-            Console.WriteLine("Введiть числа через Space:");
-            
-            string number = Console.ReadLine();
-            string[] numbers = number.Split(' ');
-            int[] array = new int[numbers.Length];
-            
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                array[i] = Convert.ToInt32(numbers[i]);
-            }
-            return array;
-        }
-        static void PrintArrayFirst(int[] array)
-        {
-            foreach (int element in array)
-            {
-                Console.Write(element + " ");
-            }
-            Console.WriteLine();
-        }
-        static void MessageInputArray()
-        {
-            Console.WriteLine("Як бажаєте заповнити масив?");
-            Console.WriteLine("Введiть 1 для випадкового заповнення масиву:");
-            Console.WriteLine("Введiть 2 для вводу вручну (через Space):");
-            Console.WriteLine("Введiть 0 для виходу з програми!");
-        }
-        static void BlockFirst()
-        {
-            MessageInputArray();
-            int[] array;
-            int choice = Convert.ToInt32(Console.ReadLine());
-            
-            switch (choice)
-            {
-                case 0:
-                    break;
-                case 1:
-                    array = ArrayInputRandom();
-                    TaskFirst(array);
-                    break;
-                case 2:
-                    array = ArrayInputSpace();
-                    TaskFirst(array);
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Команда не розпiзнана!");
-                    Console.ResetColor();
-                    break;
-            }
-        }
-        static void TaskFirst(int[] array)
+        public void TaskFirst(int[] array)
         {
             Console.WriteLine("Введiть номер елемента, з якого починаємо знищення:");
             int number = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введiть кiлькiсть елементiв, якi треба знищити:");
             int quantity = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Створений масив:");
-            PrintArrayFirst(array);
+            _af.PrintArray(array);
             
             if (number < array.Length && number + quantity <= array.Length)
             {
@@ -97,114 +36,40 @@ namespace LB4.rostik
                 Array.Resize(ref array, array.Length - quantity);
                 
                 Console.WriteLine("Результат:");
-                PrintArrayFirst(array);
+                _af.PrintArray(array);
             }
             else
             {
                 Console.WriteLine($"Неможливо знищити {quantity} елементiв, починаючи з номеру {number}!");
             }
         }
-        //BlockSecond
-        static int[][] ArrayRandom()
+        public void BlockSecond()
         {
-            Console.Write("Введiть кiлькiсть рядкiв: ");
-            int rowNumber = Convert.ToInt32(Console.ReadLine());
-            int[][] array = new int[rowNumber][];
-            Random random = new Random();
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.Write($"Введiть кiлькiсть елементiв у {i}-му рядку: ");
-                int columnCount = Convert.ToInt32(Console.ReadLine());
-                array[i] = new int[columnCount];
-
-                for (int j = 0; j < array[i].Length; j++)
-                {
-                    array[i][j] = random.Next(-100, 100);
-                }
-            }
-            return array;
+           List<int[]> list = new List<int[]>();
+            _af.Menu(list);
+            TaskSecond(list.ToArray());
         }
-        static int[][] ArraySpace()
+        public void TaskSecond(int[][] array)
         {
-            Console.WriteLine("Введiть кiлькiсть рядкiв:");
-            int rows = Convert.ToInt32(Console.ReadLine());
-            int[][] array = new int[rows][];
-            
-            for (int i = 0; i < rows; i++)
-            {
-                Console.WriteLine($"Введiть елементи {i}-го рядка, через пробіл:");
-                string[] numbers = Console.ReadLine().Split(' ');
-                array[i] = new int[numbers.Length];
-                
-                for (int j = 0; j < numbers.Length; j++)
-                {
-                    array[i][j] = Convert.ToInt32(numbers[j]);
-                }
-            }
-            return array;
-        }
-        static void PrintArraySecond(int[][] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                for (int j = 0; j < array[i].Length; j++)
-                {
-                    Console.Write("{0,4}", array[i][j]);
-                }
-                Console.WriteLine();
-            }
-        }
-        static void BlockSecond()
-        {
-            MessageInputArray();
-            int[][] array;
-            int choice = Convert.ToInt32(Console.ReadLine());
-            
-            switch (choice)
-            {
-                case 0:
-                    break;
-                case 1:
-                    array = ArrayRandom();
-                    TaskSecond(array);
-                    break;
-                case 2:
-                    array = ArraySpace();
-                    TaskSecond(array);
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Команда не розпiзнана!");
-                    Console.ResetColor();
-                    break;
-            }
-        }
-        static void TaskSecond(int[][] array)
-        {
-            Console.WriteLine("Введiть номер рядка, який потрiбно знищити:");
+            Console.Write("Введiть номер рядка, який потрiбно знищити: ");
             int number = Convert.ToInt32(Console.ReadLine());
-
+            
             if (number < 0 || number >= array.Length)
             {
                 Console.WriteLine($"Рядок з номером {number} не iснує у масивi.");
                 return;
             }
-
+            
             Console.WriteLine("Створений масив:");
-            PrintArraySecond(array);
-
-            for (int i = number; i < array.Length - 1; i++)
-            {
-                array[i] = array[i + 1];
-            }
-
+            _af.PrintArray(array);
+            
+            array[number] = array[array.Length - 1];
             Array.Resize(ref array, array.Length - 1);
-
+            
             Console.WriteLine("Результат:");
-            PrintArraySecond(array);
+            _af.PrintArray(array);
         }
-        public static void InitTaskMenu()
+        public void InitTaskMenu()
         {
             Dictionary<int, MenuOptionStruct> menuOptions = new Dictionary<int, MenuOptionStruct>
             {
@@ -212,7 +77,7 @@ namespace LB4.rostik
                 { 2, new MenuOptionStruct(BlockSecond) },
             };
 
-            Menu menu = new Menu(menuOptions);
+            MenuWithPreDefinedPlaceholder menu = new MenuFactory().CreateMenuWithPreDefinedPlaceholders(menuOptions);
             menu.Init();
         }
     }
