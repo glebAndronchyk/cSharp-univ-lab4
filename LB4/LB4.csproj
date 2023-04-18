@@ -43,6 +43,7 @@
         <Compile Include="Components\MenuFactory.cs" />
         <Compile Include="Components\MenuWithCustomPlaceholder.cs" />
         <Compile Include="Components\MenuWithPreDefinedPlaceholder.cs" />
+        <Compile Include="hlib\Hlib.cs" />
         <Compile Include="Main.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="rostik\Rostik.cs" />
