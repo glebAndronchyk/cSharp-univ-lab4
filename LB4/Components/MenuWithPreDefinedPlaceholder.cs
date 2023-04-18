@@ -4,11 +4,11 @@ using LB4.Structs;
 
 namespace LB4.Components
 {
-    public class Menu
+    public class MenuWithPreDefinedPlaceholder
     {
         private readonly Dictionary<int, MenuOptionStruct> _options;
 
-        public Menu(Dictionary<int, MenuOptionStruct> options)
+        public MenuWithPreDefinedPlaceholder(Dictionary<int, MenuOptionStruct> options)
         {
             _options = options;
         }
@@ -23,7 +23,7 @@ namespace LB4.Components
                 inputChoice = int.Parse(Console.ReadLine());
 
                 if (inputChoice == 0) return;
-                
+
                 if (!_options.ContainsKey(inputChoice))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -36,7 +36,7 @@ namespace LB4.Components
                 return;
             } while (inputChoice != 0);
         }
-
+        
         private void AskUser()
         {
             Console.WriteLine("Оберіть:");
