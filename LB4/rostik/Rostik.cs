@@ -2,15 +2,17 @@ using System;
 using System.Collections.Generic;
 using LB4.Components;
 using LB4.Structs;
+using LB4.utils;
 
 namespace LB4.rostik
 {
     class Rostik
     {
-        public static string name = "Ростік";
+        public string Name = "Ростік";
+        public ArrayFiller _af = new ArrayFiller();
         
         //BlockFirst
-        static int[] ArrayInputRandom()
+        public int[] ArrayInputRandom()
         {
             Console.WriteLine("Введiть кiлькiсть елементiв:");
             
@@ -24,7 +26,7 @@ namespace LB4.rostik
             }
             return array;
         }
-        static int[] ArrayInputSpace()
+        public int[] ArrayInputSpace()
         {
             Console.WriteLine("Введiть числа через Space:");
             
@@ -38,7 +40,7 @@ namespace LB4.rostik
             }
             return array;
         }
-        static void PrintFirst(int[] array)
+        public void PrintFirst(int[] array)
         {
             foreach (int element in array)
             {
@@ -46,14 +48,14 @@ namespace LB4.rostik
             }
             Console.WriteLine();
         }
-        static void MessageInputArray()
+        public void MessageInputArray()
         {
             Console.WriteLine("Як бажаєте заповнити масив?");
             Console.WriteLine("Введiть 1 для випадкового заповнення масиву:");
             Console.WriteLine("Введiть 2 для вводу вручну (через Space):");
             Console.WriteLine("Введiть 0 для виходу з програми!");
         }
-        static void BlockFirst()
+        public void BlockFirst()
         {
             MessageInputArray();
             int[] array;
@@ -78,7 +80,7 @@ namespace LB4.rostik
                     break;
             }
         }
-        static void TaskFirst(int[] array)
+        public void TaskFirst(int[] array)
         {
             Console.WriteLine("Введiть номер елемента, з якого починаємо знищення:");
             int number = Convert.ToInt32(Console.ReadLine());
@@ -104,47 +106,7 @@ namespace LB4.rostik
                 Console.WriteLine($"Неможливо знищити {quantity} елементiв, починаючи з номеру {number}!");
             }
         }
-        //BlockSecond
-        static int[][] ArrayRandom()
-        {
-            Console.Write("Введiть кiлькiсть рядкiв: ");
-            int rowNumber = Convert.ToInt32(Console.ReadLine());
-            int[][] array = new int[rowNumber][];
-            Random random = new Random();
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.Write($"Введiть кiлькiсть елементiв у {i}-му рядку: ");
-                int columnCount = Convert.ToInt32(Console.ReadLine());
-                array[i] = new int[columnCount];
-
-                for (int j = 0; j < array[i].Length; j++)
-                {
-                    array[i][j] = random.Next(-100, 100);
-                }
-            }
-            return array;
-        }
-        static int[][] ArraySpace()
-        {
-            Console.WriteLine("Введiть кiлькiсть рядкiв:");
-            int rows = Convert.ToInt32(Console.ReadLine());
-            int[][] array = new int[rows][];
-            
-            for (int i = 0; i < rows; i++)
-            {
-                Console.WriteLine($"Введiть елементи {i}-го рядка, через пробіл:");
-                string[] numbers = Console.ReadLine().Split(' ');
-                array[i] = new int[numbers.Length];
-                
-                for (int j = 0; j < numbers.Length; j++)
-                {
-                    array[i][j] = Convert.ToInt32(numbers[j]);
-                }
-            }
-            return array;
-        }
-        static void PrintSecond(int[][] array)
+        public void PrintSecond(int[][] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -155,32 +117,13 @@ namespace LB4.rostik
                 Console.WriteLine();
             }
         }
-        static void BlockSecond()
+        public void BlockSecond()
         {
-            MessageInputArray();
-            int[][] array;
-            int choice = Convert.ToInt32(Console.ReadLine());
-            
-            switch (choice)
-            {
-                case 0:
-                    break;
-                case 1:
-                    array = ArrayRandom();
-                    TaskSecond(array);
-                    break;
-                case 2:
-                    array = ArraySpace();
-                    TaskSecond(array);
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Команда не розпiзнана!");
-                    Console.ResetColor();
-                    break;
-            }
+            int[][] array = new int[100][];
+            _af.Menu(array);
+            TaskSecond(array);
         }
-        static void TaskSecond(int[][] array)
+        public void TaskSecond(int[][] array)
         {
             Console.Write("Введiть номер рядка, який потрiбно знищити: ");
             int number = Convert.ToInt32(Console.ReadLine());
@@ -192,16 +135,15 @@ namespace LB4.rostik
             }
             
             Console.WriteLine("Створений масив:");
-            PrintSecond(array);
+            _af.PrintArray(array);
             
             array[number] = array[array.Length - 1];
             Array.Resize(ref array, array.Length - 1);
             
             Console.WriteLine("Результат:");
-            PrintSecond(array);
-            
+            _af.PrintArray(array);
         }
-        public static void InitTaskMenu()
+        public void InitTaskMenu()
         {
             Dictionary<int, MenuOptionStruct> menuOptions = new Dictionary<int, MenuOptionStruct>
             {
@@ -209,7 +151,7 @@ namespace LB4.rostik
                 { 2, new MenuOptionStruct(BlockSecond) },
             };
 
-            Menu menu = new Menu(menuOptions);
+            MenuWithPreDefinedPlaceholder menu = new MenuFactory().CreateMenuWithPreDefinedPlaceholders(menuOptions);
             menu.Init();
         }
     }
