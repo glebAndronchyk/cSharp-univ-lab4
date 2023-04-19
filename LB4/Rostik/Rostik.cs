@@ -63,7 +63,11 @@ namespace LB4.rostik
             Console.WriteLine("Створений масив:");
             _af.PrintArray(array);
             
-            array[number] = array[array.Length - 1];
+            for (int i = number; i < array.Length - 1; i++)
+            {
+                array[i] = array[i + 1];
+            }
+            
             Array.Resize(ref array, array.Length - 1);
             
             Console.WriteLine("Результат:");
