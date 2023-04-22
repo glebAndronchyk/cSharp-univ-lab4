@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using LB4.Components;
 using LB4.Structs;
@@ -111,7 +112,8 @@ namespace LB4.hlib
             Console.WriteLine("Результат:");
             _af.PrintArray(resultArray);
             Console.WriteLine("Відсортований масив:");
-            Array.Sort(array);
+            Array.Sort(array, 
+                (a, b) => b.CompareTo(a));
             _af.PrintArray(array);
         }
         
