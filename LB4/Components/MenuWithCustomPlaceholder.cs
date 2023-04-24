@@ -44,7 +44,10 @@ namespace LB4.Components
             Console.WriteLine(_askPlaceholder);
             foreach (var option in _options)
             {
-                Console.WriteLine($"Введiть {option.Key}, щоб {option.Value.placeholder}:");
+                if (!option.Value.isDisabled)
+                {
+                    Console.WriteLine($"Введiть {option.Key}, щоб {option.Value.placeholder}:");   
+                }
             }
             Console.WriteLine("Введiть 0 для виходу з програми!");
         }

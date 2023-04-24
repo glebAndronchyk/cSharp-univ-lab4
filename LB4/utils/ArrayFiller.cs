@@ -7,26 +7,26 @@ namespace LB4.utils
 {
     public class ArrayFiller
     {
-        public void Menu(List<int> list)
+        public void Menu(List<int> list, bool disableRandom = false, bool disableHand = false)
         {
             Dictionary<int, MenuOptionWithCustomPlaceholderStruct> menuOptions =
                 new Dictionary<int, MenuOptionWithCustomPlaceholderStruct>
                 {
-                    { 1, new MenuOptionWithCustomPlaceholderStruct(() => RandomArray(list), "заповнити рандомом") },
-                    { 2, new MenuOptionWithCustomPlaceholderStruct(() => FillByHands(list), "заповнити руками") },
+                    { disableRandom ? 0 : 1, new MenuOptionWithCustomPlaceholderStruct(() => RandomArray(list), "заповнити рандомом", disableRandom) },
+                    { disableRandom ? 1 : 2, new MenuOptionWithCustomPlaceholderStruct(() => FillByHands(list), "заповнити руками", disableHand) },
                 };
             MenuWithCustomPlaceholder menu =
                 new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити");
             menu.Init();
         }
 
-        public void Menu(List<int[]> list)
+        public void Menu(List<int[]> list, bool disableRandom = false, bool disableHand = false)
         {
             Dictionary<int, MenuOptionWithCustomPlaceholderStruct> menuOptions =
                 new Dictionary<int, MenuOptionWithCustomPlaceholderStruct>
                 {
-                    { 1, new MenuOptionWithCustomPlaceholderStruct(() => RandomArray(list), "заповнити рандомом") },
-                    { 2, new MenuOptionWithCustomPlaceholderStruct(() => FillByHands(list), "заповнити руками") },
+                    { disableRandom ? 0 : 1, new MenuOptionWithCustomPlaceholderStruct(() => RandomArray(list), "заповнити рандомом", disableRandom) },
+                    { disableRandom ? 1 : 2, new MenuOptionWithCustomPlaceholderStruct(() => FillByHands(list), "заповнити руками", disableHand) },
                 };
             MenuWithCustomPlaceholder menu =
                 new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити");

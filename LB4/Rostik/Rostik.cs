@@ -9,7 +9,7 @@ namespace LB4.rostik
     class Rostik
     {
         public string Name = "Ростік";
-        public ArrayFiller _af = new ArrayFiller();
+        private readonly ArrayFiller _af = new ArrayFiller();
         
         public void BlockFirst()
         {
