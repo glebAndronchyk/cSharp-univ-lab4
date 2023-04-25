@@ -76,13 +76,12 @@ namespace LB4.rostik
         }
         public void BlockThird()
         {
-            List<List<int>> list = new List<List<int>>();
+            List<int[]> list = new List<int[]>();
             _af.Menu(list);
-            TaskThird(list);
+            TaskThird(list.ToArray());
         }
-        private void TaskThird(List<List<int>> list)
+        private void TaskThird(int[][] arrayP)
         {
-            int[][] arrayP = list.Select(l => l.ToArray()).ToArray();
             int[][] arrayQ = new int[arrayP.Length][];
             int maxColumns = arrayP[0].Length;
             Random rand = new Random();

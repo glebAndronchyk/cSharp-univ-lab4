@@ -32,19 +32,6 @@ namespace LB4.utils
                 new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити");
             menu.Init();
         }
-        
-        public void Menu(List<List<int>> list, bool disableRandom = false, bool disableHand = false)
-        {
-            Dictionary<int, MenuOptionWithCustomPlaceholderStruct> menuOptions =
-                new Dictionary<int, MenuOptionWithCustomPlaceholderStruct>
-                {
-                    { disableRandom ? 0 : 1, new MenuOptionWithCustomPlaceholderStruct(() => RandomArray(list), "заповнити рандомом", disableRandom) },
-                    { disableRandom ? 1 : 2, new MenuOptionWithCustomPlaceholderStruct(() => FillByHands(list), "заповнити руками", disableHand) },
-                };
-            MenuWithCustomPlaceholder menu =
-                new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити");
-            menu.Init();
-        }
 
         private void RandomArray(List<int> list)
         {
@@ -107,44 +94,7 @@ namespace LB4.utils
                 }
             }
         }
-        private void RandomArray(List<List<int>> list)
-        {
-            Console.WriteLine("Введiть кiлькiсть рядкiв:");
-            int rowNumber = Convert.ToInt32(Console.ReadLine());
-            Random random = new Random();
-
-            for (int i = 0; i < rowNumber; i++)
-            {
-                Console.Write($"Введiть кiлькiсть елементiв у {i}-му рядку: ");
-                int columnCount = Convert.ToInt32(Console.ReadLine());
-                List<int> row = new List<int>();
-
-                for (int j = 0; j < columnCount; j++)
-                {
-                    row.Add(random.Next(-100, 100));
-                }
-                list.Add(row);
-            }
-        }
-        private void FillByHands(List<List<int>> list)
-        {
-            Console.WriteLine("Введiть кiлькiсть рядкiв:");
-            int rows = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 0; i < rows; i++)
-            {
-                Console.WriteLine($"Введiть елементи {i}-го рядка, через Space:");
-                string[] numbers = Console.ReadLine().Split(' ');
-                List<int> rowList = new List<int>();
-
-                for (int j = 0; j < numbers.Length; j++)
-                {
-                    rowList.Add(Convert.ToInt32(numbers[j]));
-                }
-
-                list.Add(rowList);
-            }
-        }
+        
         public void PrintArray(int[] array)
         {
             foreach (int element in array)
