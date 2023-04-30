@@ -22,7 +22,7 @@ namespace LB4.Components
             {
                 inputChoice = int.Parse(Console.ReadLine());
 
-                if (inputChoice == 0) return;
+                if (inputChoice == 0) Environment.Exit(0);
 
                 if (!_options.ContainsKey(inputChoice))
                 {
@@ -39,7 +39,7 @@ namespace LB4.Components
         
         private void AskUser()
         {
-            Console.WriteLine("Оберіть:");
+            Console.WriteLine("Оберiть:");
             foreach (var option in _options)
             {
                 string studentText = $"студента {option.Value.studentName}";

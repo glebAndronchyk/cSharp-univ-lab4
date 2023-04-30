@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using LB4.Components;
 using LB4.Structs;
 using LB4.utils;
@@ -9,7 +8,7 @@ namespace LB4.rostik
 {
     class Rostik
     {
-        public string Name = "Ростік";
+        public string Name = "Ростiк";
         private readonly ArrayFiller _af = new ArrayFiller();
         
         public void BlockFirst()

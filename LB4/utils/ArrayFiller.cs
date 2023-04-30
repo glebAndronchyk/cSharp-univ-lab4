@@ -16,7 +16,7 @@ namespace LB4.utils
                     { disableRandom ? 1 : 2, new MenuOptionWithCustomPlaceholderStruct(() => FillByHands(list), "заповнити руками", disableHand) },
                 };
             MenuWithCustomPlaceholder menu =
-                new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити");
+                new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити масив?");
             menu.Init();
         }
 
@@ -29,7 +29,7 @@ namespace LB4.utils
                     { disableRandom ? 1 : 2, new MenuOptionWithCustomPlaceholderStruct(() => FillByHands(list), "заповнити руками", disableHand) },
                 };
             MenuWithCustomPlaceholder menu =
-                new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити");
+                new MenuFactory().CreateMenuWithCustomPlaceholders(menuOptions, "Як бажаєте заповнити масив?");
             menu.Init();
         }
 

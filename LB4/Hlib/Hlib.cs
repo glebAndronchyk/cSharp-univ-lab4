@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using LB4.Components;
 using LB4.Structs;
@@ -9,7 +8,7 @@ namespace LB4.hlib
 {
     public class Hlib
     {
-        public string Name = "Гліб";
+        public string Name = "Глiб";
         private readonly ArrayFiller _af = new ArrayFiller();
         
         public void BlockFirst()
